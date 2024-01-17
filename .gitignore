@@ -1,6 +1,5 @@
 *.iml
 .gradle
-app/src/main/java/.git_bad
 local.properties
 .idea
 .idea/caches

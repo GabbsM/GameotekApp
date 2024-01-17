@@ -1,0 +1,29 @@
+
+ENDPOINTS:
+
+Lanzamientos por fecha:
+https://api.rawg.io/api/games?key=0e4861144c0844e98cd8b3b469211c65&dates=2023-11-01,2023-12-30&platforms=18,1,7
+
+https://api.rawg.io/api/games?key=0e4861144c0844e98cd8b3b469211c65&dates=2019-09-01,2019-09-30&platforms=18,1,7
+?key=0e4861144c0844e98cd8b3b469211c65
+
+GET https://api.rawg.io/api/games&dates=2019-09-01,2019-09-30&platforms=18,1,7
+
+Juegos populares
+
+https://api.rawg.io/api/games?key=0e4861144c0844e98cd8b3b469211c65&dates=2023-01-01,2023-12-31&ordering=-added
+
+Detalle de un juego:
+https://api.rawg.io/api/games/{42396}?key=0e4861144c0844e98cd8b3b469211c65&page_size=1
+
+
+
+
+PS C:\Users\Foo\AndroidStudioProjects\GameOtekaApp3\app\src\main\java> rm com/gaby/gameotekaapp/presentation/components/CardJuego.kt
+PS C:\Users\Foo\AndroidStudioProjects\GameOtekaApp3\app\src\main\java> rm com/gaby/gameotekaapp/presentation/components/CardScreenShot.kt
+PS C:\Users\Foo\AndroidStudioProjects\GameOtekaApp3\app\src\main\java> rm com/gaby/gameotekaapp/presentation/screens/desarrollador/DesarrolladorContent.kt
+PS C:\Users\Foo\AndroidStudioProjects\GameOtekaApp3\app\src\main\java> rm com/gaby/gameotekaapp/presentation/screens/desarrollador/DesarrolladorScreen.kt
+PS C:\Users\Foo\AndroidStudioProjects\GameOtekaApp3\app\src\main\java> rm com/gaby/gameotekaapp/presentation/screens/ediciones/EdicionesContent.kt
+PS C:\Users\Foo\AndroidStudioProjects\GameOtekaApp3\app\src\main\java> rm com/gaby/gameotekaapp/presentation/screens/ediciones/EdicionesScreen.kt
+PS C:\Users\Foo\AndroidStudioProjects\GameOtekaApp3\app\src\main\java> rm com/gaby/gameotekaapp/presentation/RawgViewModelFilteredList.kt
+PS C:\Users\Foo\AndroidStudioProjects\GameOtekaApp3\app\src\main\java> rm com/gaby/gameotekaapp/presentation/components/CardDeveloper.kt
