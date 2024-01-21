@@ -15,7 +15,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.gaby.gameotekaapp.model.VideoJuegoListaItem
+import com.gaby.gameotekaapp.data.network.rawg.model.VideoJuegoListaItem
 
 
 @Composable

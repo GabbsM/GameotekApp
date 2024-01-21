@@ -4,19 +4,19 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.gaby.gameotekaapp.presentation.RawgViewModelFilteredList
-import com.gaby.gameotekaapp.presentation.RawGViewModelDetail
-import com.gaby.gameotekaapp.presentation.RawGViewModelList
-import com.gaby.gameotekaapp.presentation.screens.desarrollador.DesarrolladorScreen
-import com.gaby.gameotekaapp.presentation.screens.descubre.DescubreScreen
-import com.gaby.gameotekaapp.presentation.screens.detallesJuegos.detallesScreen
-import com.gaby.gameotekaapp.presentation.screens.ediciones.EdicionesScreen
-import com.gaby.gameotekaapp.presentation.screens.login.LoginScreen
-import com.gaby.gameotekaapp.presentation.screens.myGameoteka.MyGameoTekaScreen
-import com.gaby.gameotekaapp.presentation.screens.reviews.ReviewScreen
-import com.gaby.gameotekaapp.presentation.screens.singUp.SignUpScreen
-import com.gaby.gameotekaapp.presentation.screens.tiendas.TiendasScreen
-import com.gaby.gameotekaapp.presentation.screens.usuario.UsuarioScreen
+import com.gaby.gameotekaapp.presentation.viewModels.FilteredListViewModel
+import com.gaby.gameotekaapp.presentation.viewModels.DetallesViewModel
+import com.gaby.gameotekaapp.presentation.viewModels.DescubreViewModel
+import com.gaby.gameotekaapp.presentation.screens.filteredListScreen
+import com.gaby.gameotekaapp.presentation.screens.descubreScreen
+import com.gaby.gameotekaapp.presentation.screens.detallesScreen
+import com.gaby.gameotekaapp.presentation.screens.EdicionesScreen
+import com.gaby.gameotekaapp.presentation.screens.LoginScreen
+import com.gaby.gameotekaapp.presentation.screens.MyGameoTekaScreen
+import com.gaby.gameotekaapp.presentation.screens.ReviewScreen
+import com.gaby.gameotekaapp.presentation.screens.SignUpScreen
+import com.gaby.gameotekaapp.presentation.screens.TiendasScreen
+import com.gaby.gameotekaapp.presentation.screens.UsuarioScreen
 
 @Composable
 fun AppNavigation(navController: NavHostController) {
@@ -27,7 +27,7 @@ fun AppNavigation(navController: NavHostController) {
     ) {
 
         composable("juegos") {
-            DescubreScreen(navController, viewModel = RawGViewModelList())
+            descubreScreen(navController, viewModel = DescubreViewModel())
         }
 
         composable(AppScreen.Login.route) {
@@ -39,34 +39,34 @@ fun AppNavigation(navController: NavHostController) {
         }
 
         composable(AppScreen.Usuario.route) {
-            UsuarioScreen(navController, viewModel = RawGViewModelList())
+            UsuarioScreen(navController, viewModel = DescubreViewModel())
         }
 
 
         composable(AppScreen.MyGameoTeka.route) {
-            MyGameoTekaScreen(navController, viewModel = RawGViewModelList())
+            MyGameoTekaScreen(navController, viewModel = DescubreViewModel())
         }
 
         composable(AppScreen.Descubre.route) {
-            DescubreScreen(navController, viewModel = RawGViewModelList())
+            descubreScreen(navController, viewModel = DescubreViewModel())
         }
 
         composable(AppScreen.Reviews.route) {
-            ReviewScreen(navController, viewModel = RawGViewModelList())
+            ReviewScreen(navController, viewModel = DescubreViewModel())
         }
 
         composable(AppScreen.Tiendas.route) {
-            TiendasScreen(navController, viewModel = RawGViewModelList())
+            TiendasScreen(navController, viewModel = DescubreViewModel())
         }
 
         composable(AppScreen.Ediciones.route){
-            EdicionesScreen(navController, viewModel = RawgViewModelFilteredList())
+            EdicionesScreen(navController, viewModel = FilteredListViewModel())
         }
 
-        composable("detalles/{gameId}") { backStackEntry ->
+        composable(AppScreen.DetallesJuego.route + "/{gameId}") { backStackEntry ->
             val gameId = backStackEntry.arguments?.getString("gameId")?.toIntOrNull()
             if (gameId != null) {
-                detallesScreen(navController, viewModel = RawGViewModelDetail(gameId), gameId = gameId)
+                detallesScreen(navController, viewModel = DetallesViewModel(gameId), gameId = gameId)
             } else {
                 // Manejar el caso en que gameId no es un número válido
             }
@@ -76,7 +76,7 @@ fun AppNavigation(navController: NavHostController) {
              backStackEntry ->
                 val developerId = backStackEntry.arguments?.getString("developerId")?.toIntOrNull()
                 if (developerId != null) {
-                    DesarrolladorScreen(navController, viewModel = RawgViewModelFilteredList(developerId=developerId))
+                    filteredListScreen(navController, viewModel = FilteredListViewModel(developerId=developerId))
                 } else {
                     // Manejar el caso en que gameId no es un número válido
                 }
@@ -86,7 +86,7 @@ fun AppNavigation(navController: NavHostController) {
                 backStackEntry ->
             val publisherId = backStackEntry.arguments?.getString("publisherId")?.toIntOrNull()
             if (publisherId != null) {
-                DesarrolladorScreen(navController, viewModel = RawgViewModelFilteredList(publisherId=publisherId))
+                filteredListScreen(navController, viewModel = FilteredListViewModel(publisherId=publisherId))
             } else {
                 // Manejar el caso en que gameId no es un número válido
             }

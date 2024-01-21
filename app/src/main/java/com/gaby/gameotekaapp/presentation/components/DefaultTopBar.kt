@@ -1,7 +1,6 @@
 package com.gaby.gameotekaapp.presentation.components
 
 
-import android.widget.Toast
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,7 +24,7 @@ import androidx.navigation.NavHostController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DefaultTopBar(
-    tittle: String,
+    title: String,
     upAvailable: Boolean = false,
     navController: NavHostController? = null,
     color: Color

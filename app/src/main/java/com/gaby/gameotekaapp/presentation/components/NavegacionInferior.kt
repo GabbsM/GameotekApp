@@ -1,6 +1,5 @@
 package com.gaby.gameotekaapp.presentation.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
@@ -11,18 +10,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
-import com.gaby.gameotekaapp.navigation.Items_Menu
+import com.gaby.gameotekaapp.navigation.ItemsMenu
 
 @Composable
 fun NavegacionInferior(navController: NavHostController) {
 
     val menu_items = listOf(
 
-        Items_Menu.Home,
-        Items_Menu.Buscar,
-        Items_Menu.Descubre,
-        Items_Menu.MyGameoTeka,
-        Items_Menu.Usuario,
+        ItemsMenu.Home,
+        ItemsMenu.Buscar,
+        ItemsMenu.Descubre,
+        ItemsMenu.MyGameoTeka,
+        ItemsMenu.Usuario,
 
     )
 

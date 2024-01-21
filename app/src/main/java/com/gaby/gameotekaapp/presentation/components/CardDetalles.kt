@@ -14,7 +14,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.gaby.gameotekaapp.model.VideoJuegoDetalles
+import com.gaby.gameotekaapp.data.network.rawg.model.VideoJuegoDetalles
 
 @Composable
 fun CardDetalles(juego: VideoJuegoDetalles, navController: NavHostController) {
