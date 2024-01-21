@@ -15,7 +15,7 @@ import com.gaby.gameotekaapp.presentation.viewModels.DescubreViewModel
 import com.gaby.gameotekaapp.presentation.contents.descubreContent
 
 @Composable
-fun descubreScreen(navController : NavHostController, viewModel: DescubreViewModel) {
+fun DescubreScreen(navController : NavHostController, viewModel: DescubreViewModel) {
 
     Scaffold(
         topBar = {  DefaultTopBar(title = "GameOTeka", upAvailable = false, navController = navController,color= Color.White) },
