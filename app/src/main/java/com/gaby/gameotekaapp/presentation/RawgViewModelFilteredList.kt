@@ -3,7 +3,7 @@ package com.gaby.gameotekaapp.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gaby.gameotekaapp.data.network.RetrofitClient
-import com.gaby.gameotekaapp.model.VideoJuegosModel
+import com.gaby.gameotekaapp.model.VideoJuegoListaItem
 import com.gaby.gameotekaapp.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +13,8 @@ import kotlinx.coroutines.withContext
 
 class RawgViewModelFilteredList(developerId: Int? = null, publisherId: Int? = null) : ViewModel(){
 
-    private val _listDeJuegosFiltrada = MutableStateFlow<VideoJuegosModel?>(null)
+
+    private val _listDeJuegosFiltrada = MutableStateFlow<List<VideoJuegoListaItem>?>(null)
     val listaDeJuegosFiltrada = _listDeJuegosFiltrada.asStateFlow()
 
     init {
@@ -33,11 +34,8 @@ class RawgViewModelFilteredList(developerId: Int? = null, publisherId: Int? = nu
 
             withContext(Dispatchers.Main) {
                 if (response!!.isSuccessful) {
-                    _listDeJuegosFiltrada.value = response.body()
+                    _listDeJuegosFiltrada.value = response.body()?.results
 
-                    _listDeJuegosFiltrada.value?.results?.forEach { it
-                        println("booooh-" + it.nombre)
-                    }
                 }
             }
         }

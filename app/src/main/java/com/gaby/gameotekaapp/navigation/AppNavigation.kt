@@ -11,7 +11,6 @@ import com.gaby.gameotekaapp.presentation.screens.desarrollador.DesarrolladorScr
 import com.gaby.gameotekaapp.presentation.screens.descubre.DescubreScreen
 import com.gaby.gameotekaapp.presentation.screens.detallesJuegos.detallesScreen
 import com.gaby.gameotekaapp.presentation.screens.ediciones.EdicionesScreen
-import com.gaby.gameotekaapp.presentation.screens.home.HomeScreen
 import com.gaby.gameotekaapp.presentation.screens.login.LoginScreen
 import com.gaby.gameotekaapp.presentation.screens.myGameoteka.MyGameoTekaScreen
 import com.gaby.gameotekaapp.presentation.screens.reviews.ReviewScreen
@@ -37,10 +36,6 @@ fun AppNavigation(navController: NavHostController) {
 
         composable(AppScreen.SignUp.route) {
             SignUpScreen(navController)
-        }
-
-        composable(AppScreen.Home.route) {
-            HomeScreen(navController, viewModel = RawGViewModelList())
         }
 
         composable(AppScreen.Usuario.route) {

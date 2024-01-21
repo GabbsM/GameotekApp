@@ -37,9 +37,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.gaby.gameotekaapp.R
+import com.gaby.gameotekaapp.model.Developer
 import com.gaby.gameotekaapp.presentation.RawGViewModelDetail
 import com.gaby.gameotekaapp.presentation.components.CardDetalles
-import com.gaby.gameotekaapp.presentation.components.CardDeveloper
 import com.gaby.gameotekaapp.presentation.components.ScreenshotCard
 
 
@@ -48,7 +48,7 @@ fun DetallesContent(
     paddingValues: PaddingValues,
     navHostController: NavHostController,
     viewModel: RawGViewModelDetail
-){
+) {
 
     val scrollState = rememberScrollState()
 
@@ -61,14 +61,14 @@ fun DetallesContent(
         val urlTienda: String? = juegoSeleccionado?.stores?.getOrNull(0)?.url
         val LikeCount = 0
         val nombreDesarrollador: String? = juegoSeleccionado?.developers?.getOrNull(0)?.nombre
-        val idDesarrollador: Int? = juegoSeleccionado?.developers?.getOrNull(0)?.id
+        val developer: Developer? = juegoSeleccionado?.developers?.getOrNull(0)
         val nombrePublisher: String? = juegoSeleccionado?.publishers?.getOrNull(0)?.nombre
         val idPublisher: Int? = juegoSeleccionado?.publishers?.getOrNull(0)?.id
+        val idDeveloper: Int? = juegoSeleccionado?.developers?.getOrNull(0)?.id
         val nombreGeneros: String? = juegoSeleccionado?.genres?.getOrNull(0)?.nombre
         val website: String? = juegoSeleccionado?.website
         val plataformas: List<String>? = juegoSeleccionado?.platforms?.map { it.platform.nombre }
         val description = juegoSeleccionado?.description
-        val developerId: Int? = juegoSeleccionado?.developers?.getOrNull(0)?.id
 
 
 
@@ -77,22 +77,18 @@ fun DetallesContent(
         if (juegoSeleccionado?.id != null) {
 
             Column(
-                modifier = Modifier
-                    .padding(start = 8.dp)
-                    .fillMaxWidth(),
+                modifier = Modifier.padding(start = 8.dp).fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 CardDetalles(
-                    juego = juegoSeleccionado!!,
-                    navController = navHostController
+                    juego = juegoSeleccionado!!, navController = navHostController
                 )
 
                 Text(
                     text = "${juegoSeleccionado!!.nombre}",
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 20.sp,
-                    modifier = Modifier.padding(start = 8.dp)
-                        .align(Alignment.CenterHorizontally)
+                    modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterHorizontally)
                 )
                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -127,9 +123,7 @@ fun DetallesContent(
                     Row(modifier = Modifier) {
                         OutlinedCard(
                             shape = RoundedCornerShape(4.dp),
-                            modifier = Modifier
-                                .padding(start = 10.dp)
-                                .height(40.dp),
+                            modifier = Modifier.padding(start = 10.dp).height(40.dp),
                             border = BorderStroke(1.dp, Color.Gray),
                         ) {
                             Text(
@@ -144,16 +138,14 @@ fun DetallesContent(
 
                     OutlinedCard(
                         shape = RoundedCornerShape(4.dp),
-                        modifier = Modifier.padding(start = 10.dp)
-                            .height(40.dp),
+                        modifier = Modifier.padding(start = 10.dp).height(40.dp),
                         border = BorderStroke(1.dp, Color.Gray),
                     ) {
                         Row {
                             Image(
                                 painter = painterResource(R.drawable.logometacritic),
                                 contentDescription = "RawG",
-                                modifier = Modifier
-                                    .size(45.dp)
+                                modifier = Modifier.size(45.dp)
                                     .padding(start = 10.dp, top = 10.dp, bottom = 10.dp)
                             )
                             Text(
@@ -169,16 +161,14 @@ fun DetallesContent(
 
                     OutlinedCard(
                         shape = RoundedCornerShape(4.dp),
-                        modifier = Modifier.padding(start = 10.dp)
-                            .height(40.dp),
+                        modifier = Modifier.padding(start = 10.dp).height(40.dp),
                         border = BorderStroke(1.dp, Color.Gray),
                     ) {
                         Row {
                             Icon(
                                 Icons.Outlined.FavoriteBorder,
                                 contentDescription = "Star",
-                                modifier = Modifier
-                                    .size(45.dp)
+                                modifier = Modifier.size(45.dp)
                                     .padding(start = 10.dp, top = 10.dp, bottom = 10.dp)
                                     .align(Alignment.CenterVertically),
                                 tint = Color.Red
@@ -196,100 +186,35 @@ fun DetallesContent(
                 Row(modifier = Modifier) {
                     OutlinedCard(
                         shape = RoundedCornerShape(4.dp),
-                        modifier = Modifier
-                            .padding(start = 10.dp, top = 14.dp, end = 28.dp)
+                        modifier = Modifier.padding(start = 10.dp, top = 14.dp, end = 28.dp)
                             .fillMaxWidth(),
                         border = BorderStroke(1.dp, Color.Gray),
                     ) {
                         Text(
                             text = "Genero:  ${nombreGeneros ?: "No disponible"}",
                             fontSize = 14.sp,
-                            modifier = Modifier.padding(10.dp)
-                                .align(Alignment.CenterHorizontally)
+                            modifier = Modifier.padding(10.dp).align(Alignment.CenterHorizontally)
                         )
                     }
                 }
 
-//                Row(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(start = 10.dp, top = 14.dp, end = 28.dp),
-//                    horizontalArrangement = Arrangement.SpaceBetween,
-//                    verticalAlignment = Alignment.CenterVertically
-//                ) {
-//                    if(developerId != null){
-//                        OutlinedCard(
-//                            shape = RoundedCornerShape(4.dp),
-//                            modifier = Modifier.fillMaxWidth()
-//                                .clickable {
-//                                    navHostController.navigate("desarrollador/${idDesarrollador}")
-//                                },
-//                            border = BorderStroke(1.dp, Color.Gray),
-//                        ) {
-//                            Row(
-//                                modifier = Modifier.fillMaxWidth(),
-//                                horizontalArrangement = Arrangement.SpaceBetween,
-//                                verticalAlignment = Alignment.CenterVertically
-//                            ) {
-//                                Text(
-//                                    text = "Desarrollador:  ${nombreDesarrollador ?: "No disponible"}",
-//                                    fontSize = 14.sp,
-//                                    modifier = Modifier.padding(start = 30.dp, top = 10.dp, bottom = 10.dp)
-//                                )
 //
-//                                Icon(Icons.Outlined.ArrowRightAlt,
-//                                    contentDescription = "Star",
-//                                    modifier = Modifier
-//                                        .size(60.dp)
-//                                        .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 20.dp))
-//                            }
-//                        }
-//                    }
-//                    OutlinedCard(
-//                        shape = RoundedCornerShape(4.dp),
-//                        modifier = Modifier.fillMaxWidth()
-//                            .clickable {
-//
-//                            },
-//                        border = BorderStroke(1.dp, Color.Gray),
-//                    ) {
-//                        Row(
-//                            modifier = Modifier.fillMaxWidth(),
-//                            horizontalArrangement = Arrangement.SpaceBetween,
-//                            verticalAlignment = Alignment.CenterVertically
-//                        ) {
-//                            Text(
-//                                text = "Desarrollador:  ${nombreDesarrollador ?: "No disponible"}",
-//                                fontSize = 14.sp,
-//                                modifier = Modifier.padding(start = 30.dp, top = 10.dp, bottom = 10.dp)
-//                            )
-//
-//                            Icon(Icons.Outlined.ArrowRightAlt,
-//                                contentDescription = "Star",
-//                                modifier = Modifier
-//                                    .size(60.dp)
-//                                    .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 20.dp))
-//                        }
-//                    }
-//                }
+
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth()
                         .padding(start = 10.dp, top = 14.dp, end = 28.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-//                    OutlinedCard(
-//                        shape = RoundedCornerShape(4.dp),
-//                        modifier = Modifier.fillMaxWidth()
-//                            .clickable { navHostController.navigate("desarrollador/${idDesarrollador}") },
-//                        border = BorderStroke(1.dp, Color.Gray),
-//                    )
-                      CardDeveloper(
-                            developer = idDesarrollador!!,
-                            navController = navHostController
-                        ) {
+                    OutlinedCard(
+                        shape = RoundedCornerShape(4.dp),
+                        modifier = Modifier.fillMaxWidth()
+                            .clickable {
+                                navHostController.navigate("desarrollador/${idDeveloper}")
+                                       },
+                        border = BorderStroke(1.dp, Color.Gray),
+                    ) {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween,
@@ -298,21 +223,33 @@ fun DetallesContent(
                             Text(
                                 text = "Desarrollador:  ${nombreDesarrollador ?: "No disponible"}",
                                 fontSize = 14.sp,
-                                modifier = Modifier.padding(start = 30.dp, top = 10.dp, bottom = 10.dp)
+                                modifier = Modifier.padding(
+                                    start = 30.dp,
+                                    top = 10.dp,
+                                    bottom = 10.dp
+                                )
                             )
 
-                            Icon(Icons.Outlined.ArrowRightAlt,
+                            Icon(
+                                Icons.Outlined.ArrowRightAlt,
                                 contentDescription = "Star",
-                                modifier = Modifier
-                                    .size(60.dp)
-                                    .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 20.dp))
+                                modifier = Modifier.size(60.dp).padding(
+                                    start = 10.dp,
+                                    top = 10.dp,
+                                    bottom = 10.dp,
+                                    end = 20.dp
+                                )
+                            )
                         }
                     }
                 }
-//
+
+
+
+
+
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth()
                         .padding(start = 10.dp, top = 14.dp, end = 28.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
@@ -331,26 +268,34 @@ fun DetallesContent(
                             Text(
                                 text = "Distribuidor:  ${nombrePublisher ?: "No disponible"}",
                                 fontSize = 14.sp,
-                                modifier = Modifier.padding(start = 30.dp, top = 10.dp, bottom = 10.dp)
+                                modifier = Modifier.padding(
+                                    start = 30.dp,
+                                    top = 10.dp,
+                                    bottom = 10.dp
+                                )
                             )
 
-                            Icon(Icons.Outlined.ArrowRightAlt,
+                            Icon(
+                                Icons.Outlined.ArrowRightAlt,
                                 contentDescription = "Star",
-                                modifier = Modifier
-                                    .size(60.dp)
-                                    .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 20.dp))
+                                modifier = Modifier.size(60.dp).padding(
+                                    start = 10.dp,
+                                    top = 10.dp,
+                                    bottom = 10.dp,
+                                    end = 20.dp
+                                )
+                            )
                         }
                     }
                 }
 
 
 
-                Row(){
+                Row {
 
                     OutlinedCard(
                         shape = RoundedCornerShape(4.dp),
-                        modifier = Modifier
-                            .padding(start = 10.dp, top = 14.dp, end = 28.dp)
+                        modifier = Modifier.padding(start = 10.dp, top = 14.dp, end = 28.dp)
                             .fillMaxWidth(),
                         border = BorderStroke(1.dp, Color.Gray),
                     ) {
@@ -376,9 +321,9 @@ fun DetallesContent(
                     }
                 }
 
-                val cleanDescription = description?.replace("<p>" , "")?.replace("</p>", "")
+                val cleanDescription = description?.replace("<p>", "")?.replace("</p>", "")
 
-                Column(modifier = Modifier.fillMaxWidth()){
+                Column(modifier = Modifier.fillMaxWidth()) {
                     Spacer(modifier = Modifier.height(15.dp))
                     Text(
                         text = "Sobre el juego:",
@@ -396,8 +341,7 @@ fun DetallesContent(
 
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth()
                         .padding(start = 10.dp, top = 14.dp, end = 28.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
@@ -416,7 +360,11 @@ fun DetallesContent(
                             Text(
                                 text = "Tiendas:${urlTienda ?: "No disponible"}",
                                 fontSize = 14.sp,
-                                modifier = Modifier.padding(start = 30.dp, top = 10.dp, bottom = 10.dp)
+                                modifier = Modifier.padding(
+                                    start = 30.dp,
+                                    top = 10.dp,
+                                    bottom = 10.dp
+                                )
                             )
 
 //                            Icon(Icons.Outlined.ArrowRightAlt,
@@ -429,8 +377,7 @@ fun DetallesContent(
                 }
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth()
                         .padding(start = 10.dp, top = 14.dp, end = 28.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
@@ -449,21 +396,29 @@ fun DetallesContent(
                             Text(
                                 text = "Ediciones y DLCs",
                                 fontSize = 14.sp,
-                                modifier = Modifier.padding(start = 30.dp, top = 10.dp, bottom = 10.dp)
+                                modifier = Modifier.padding(
+                                    start = 30.dp,
+                                    top = 10.dp,
+                                    bottom = 10.dp
+                                )
                             )
 
-                            Icon(Icons.Outlined.ArrowRightAlt,
+                            Icon(
+                                Icons.Outlined.ArrowRightAlt,
                                 contentDescription = "Star",
-                                modifier = Modifier
-                                    .size(60.dp)
-                                    .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 20.dp))
+                                modifier = Modifier.size(60.dp).padding(
+                                    start = 10.dp,
+                                    top = 10.dp,
+                                    bottom = 10.dp,
+                                    end = 20.dp
+                                )
+                            )
                         }
                     }
                 }
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth()
                         .padding(start = 10.dp, top = 14.dp, end = 28.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
@@ -482,14 +437,23 @@ fun DetallesContent(
                             Text(
                                 text = "Reviews mas recientes",
                                 fontSize = 14.sp,
-                                modifier = Modifier.padding(start = 30.dp, top = 10.dp, bottom = 10.dp)
+                                modifier = Modifier.padding(
+                                    start = 30.dp,
+                                    top = 10.dp,
+                                    bottom = 10.dp
+                                )
                             )
 
-                            Icon(Icons.Outlined.ArrowRightAlt,
+                            Icon(
+                                Icons.Outlined.ArrowRightAlt,
                                 contentDescription = "Star",
-                                modifier = Modifier
-                                    .size(60.dp)
-                                    .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 20.dp))
+                                modifier = Modifier.size(60.dp).padding(
+                                    start = 10.dp,
+                                    top = 10.dp,
+                                    bottom = 10.dp,
+                                    end = 20.dp
+                                )
+                            )
                         }
                     }
                 }

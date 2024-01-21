@@ -3,7 +3,7 @@ package com.gaby.gameotekaapp.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gaby.gameotekaapp.data.network.RetrofitClient
-import com.gaby.gameotekaapp.model.VideoJuegoDetalles
+import com.gaby.gameotekaapp.model.VideoJuegoListaItem
 import com.gaby.gameotekaapp.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,16 +14,16 @@ import kotlinx.coroutines.withContext
 class RawGViewModelList: ViewModel() {
 
 
-    private val _juegos = MutableStateFlow<List<VideoJuegoDetalles>>(emptyList())
+    private val _juegos = MutableStateFlow<List<VideoJuegoListaItem>>(emptyList())
     val juegos = _juegos.asStateFlow()
 
-        private val _novedades = MutableStateFlow<List<VideoJuegoDetalles>>(emptyList())
+    private val _novedades = MutableStateFlow<List<VideoJuegoListaItem>>(emptyList())
     val novedades  = _novedades.asStateFlow()
 
-    private val _masValorados = MutableStateFlow<List<VideoJuegoDetalles>>(emptyList())
+    private val _masValorados = MutableStateFlow<List<VideoJuegoListaItem>>(emptyList())
     val masValorados  = _masValorados.asStateFlow()
 
-    private val _proximosLanzamientos = MutableStateFlow<List<VideoJuegoDetalles>>(emptyList())
+    private val _proximosLanzamientos = MutableStateFlow<List<VideoJuegoListaItem>>(emptyList())
     val proximosLanzamientos  = _proximosLanzamientos.asStateFlow()
 
 

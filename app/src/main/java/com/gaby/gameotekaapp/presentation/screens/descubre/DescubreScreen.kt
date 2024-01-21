@@ -9,11 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.gaby.gameotekaapp.presentation.RawGViewModelDetail
 import com.gaby.gameotekaapp.presentation.RawGViewModelList
 import com.gaby.gameotekaapp.presentation.components.DefaultTopBar
 import com.gaby.gameotekaapp.presentation.components.NavegacionInferior
-import com.gaby.gameotekaapp.presentation.screens.home.components.HomeContent
 
 @Composable
 fun DescubreScreen(navController : NavHostController, viewModel: RawGViewModelList) {

@@ -15,12 +15,11 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.gaby.gameotekaapp.model.Developers
-import com.gaby.gameotekaapp.model.VideoJuegoDetalles
+import com.gaby.gameotekaapp.model.VideoJuegoListaItem
 
 
 @Composable
-fun CardJuego(juego: VideoJuegoDetalles, navController: NavHostController, onClick: () -> Unit) {
+fun CardJuego(juego: VideoJuegoListaItem, navController: NavHostController, onClick: () -> Unit) {
 
     Card(shape = RoundedCornerShape(8.dp),
         modifier = Modifier
@@ -35,7 +34,6 @@ fun CardJuego(juego: VideoJuegoDetalles, navController: NavHostController, onCli
             }) {
         Column {
             InicioImagen(imagen = juego.imagen)
-
         }
     }
 }
