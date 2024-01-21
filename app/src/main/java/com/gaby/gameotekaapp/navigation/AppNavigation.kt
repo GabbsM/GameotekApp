@@ -8,7 +8,7 @@ import com.gaby.gameotekaapp.presentation.viewModels.FilteredListViewModel
 import com.gaby.gameotekaapp.presentation.viewModels.DetallesViewModel
 import com.gaby.gameotekaapp.presentation.viewModels.DescubreViewModel
 import com.gaby.gameotekaapp.presentation.screens.filteredListScreen
-import com.gaby.gameotekaapp.presentation.screens.descubreScreen
+import com.gaby.gameotekaapp.presentation.screens.DescubreScreen
 import com.gaby.gameotekaapp.presentation.screens.detallesScreen
 import com.gaby.gameotekaapp.presentation.screens.EdicionesScreen
 import com.gaby.gameotekaapp.presentation.screens.LoginScreen
@@ -27,7 +27,7 @@ fun AppNavigation(navController: NavHostController) {
     ) {
 
         composable("juegos") {
-            descubreScreen(navController, viewModel = DescubreViewModel())
+            DescubreScreen(navController, viewModel = DescubreViewModel())
         }
 
         composable(AppScreen.Login.route) {
@@ -48,7 +48,7 @@ fun AppNavigation(navController: NavHostController) {
         }
 
         composable(AppScreen.Descubre.route) {
-            descubreScreen(navController, viewModel = DescubreViewModel())
+            DescubreScreen(navController, viewModel = DescubreViewModel())
         }
 
         composable(AppScreen.Reviews.route) {
